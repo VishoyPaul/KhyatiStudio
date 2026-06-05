@@ -1,16 +1,26 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      return Response.json(
+        { error: 'RESEND_API_KEY is missing' },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     const body = await req.json();
 
     const { name, email, projectType, message } = body;
 
     await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>',
-      to: 'khyati.canvas@gmail.com', // replace with sister's email
+      to: 'khyati.canvas@gmail.com',
+      replyTo: email,
       subject: `New Inquiry from ${name}`,
       html: `
         <h2>New Portfolio Inquiry</h2>
@@ -26,6 +36,11 @@ export async function POST(req: Request) {
 
     return Response.json({ success: true });
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    console.error(error);
+
+    return Response.json(
+      { error: 'Failed to send email' },
+      { status: 500 }
+    );
   }
 }
