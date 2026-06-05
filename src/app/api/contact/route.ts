@@ -14,7 +14,6 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
 
     const body = await req.json();
-
     const { name, email, projectType, message } = body;
 
     await resend.emails.send({
