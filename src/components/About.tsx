@@ -12,7 +12,7 @@ export default function AboutSection() {
       <div className="max-w-[1440px] mx-auto">
         {/* Grid Layout: Handles responsiveness (1 column mobile, 12 columns desktop) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Image Column: Animated using Framer Motion */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -62,7 +62,7 @@ export default function AboutSection() {
                   marginBottom: '24px',
                 }}
               >
-                I believe that true luxury lies in restraint. My approach to design merges the structural discipline of editorial fashion magazines with the fluid, immersive qualities of modern digital interfaces.
+                I believe that great design begins with clarity and purpose. My approach combines the versatility of digital tools like Canva with the precise vector geometry of CorelDRAW to create clean, high-impact visuals.
               </p>
 
               <p
@@ -74,20 +74,25 @@ export default function AboutSection() {
                   letterSpacing: '0.5px',
                 }}
               >
-                With over a decade of experience partnering with high-end lifestyle brands, I specialize in stripping away the unnecessary to reveal the core essence of a brand's narrative. Every pixel, every margin, and every typographical choice is an intentional step towards creating a timeless visual identity.
+                As an emerging graphic designer, I focus on stripping away the unnecessary to reveal the core essence of a brand's narrative. Every layout, color choice, and typographical asset is an intentional step towards crafting a memorable visual identity.
               </p>
             </div>
 
             {/* Call to Action: Resume Button */}
             <div className="pt-8">
-              <button className="border-b-2 border-[#3A1F1D] pb-1 hover:opacity-70 transition-opacity">
+              <a
+                href="/Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block border-b-2 border-[#3A1F1D] pb-1 hover:opacity-70 transition-opacity cursor-pointer"
+              >
                 <span
                   className="text-[12px] leading-[16px] tracking-[2px] uppercase text-[#3A1F1D]"
                   style={{ fontFamily: '"Inter", sans-serif', fontWeight: 600 }}
                 >
                   View Resume
                 </span>
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>

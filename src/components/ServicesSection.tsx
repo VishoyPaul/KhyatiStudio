@@ -5,22 +5,22 @@ export default function ServicesSection() {
   const services = [
     {
       icon: Palette,
-      title: 'Strategic\nBranding',
+      title: 'Clean Branding & Logos',
       description:
-        'Crafting visual identities that tell a compelling story and resonate with your audience. From signature logos to comprehensive guidelines, we build cohesive brand worlds rooted in intentional design.',
+        `Crafting distinct visual identities and custom vector logos designed to make a memorable first impression. From monogram designs to essential brand assets, I build cohesive elements that serve as the foundation of your business's visual story.`,
     },
     {
       icon: Image,
       title: 'Social Media\nCreatives',
       description:
-        'Elevating your digital presence with scroll-stopping graphics, carousel designs, and cohesive grid aesthetics tailored for luxury markets.',
+        'Elevating your digital presence with engaging graphics, carousel designs, and aesthetic grid layouts. I focus on creating scroll-stopping visuals that align with your personal brand and effectively connect with your target audience.',
       offset: true,
     },
     {
       icon: FileText,
-      title: 'Premium Canva\nTemplates',
+      title: 'Custom Canva\nTemplates',
       description:
-        'Empowering your team with bespoke, editable templates that maintain strict brand consistency without sacrificing high-end appeal.',
+        'Empowering independent brands and creators with bespoke, easily editable templates. I design reusable layouts that allow you to maintain an organized, beautiful, and consistent aesthetic across all your platforms with absolute ease.',
     },
   ];
 

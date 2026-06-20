@@ -87,7 +87,7 @@ export default function ContactSection() {
             </h2>
 
             <p className="font-['Helvetica'] text-[16px] leading-[28px] text-[#544242]">
-              Currently accepting new projects for Q3.
+              Open for collaborative design & development.
             </p>
           </div>
 

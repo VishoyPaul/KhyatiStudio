@@ -59,7 +59,7 @@ export default function Navigation({
             transition-opacity
           "
         >
-          STUDIO ARCHIVE
+          Khyati Studio
         </button>
 
         {/* Desktop Navigation */}

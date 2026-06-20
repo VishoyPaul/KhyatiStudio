@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useScroll } from 'motion/react';
 
 import Navigation from "@/components/Navigation";
@@ -13,51 +14,77 @@ import ServicesSection from "@/components/ServicesSection";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
+  
+  // 1. Setup dynamic state to track the active section
+  const [activeSection, setActiveSection] = useState('home');
 
-const handleNavigate = (section: string) => {
-  const element = document.getElementById(section);
+  const handleNavigate = (section: string) => {
+    const element = document.getElementById(section);
+    if (!element) return;
 
-  if (!element) return;
+    // Immediately update the active section visually on click
+    setActiveSection(section);
 
-  let offset = 0;
+    let offset = 0;
+    if (section === 'work') offset = 0;
+    if (section === 'services') offset = 0;
+    if (section === 'contact') offset = -30;
 
-  if (section === 'work') {
-    offset = 0; // adjust this value
-  }
+    const top =
+      element.getBoundingClientRect().top +
+      window.pageYOffset -
+      offset;
 
-  if (section === 'services') {
-    offset = 0; // adjust this value
-  }
+    window.scrollTo({
+      top,
+      behavior: 'smooth',
+    });
+  };
 
-  if (section === 'contact') {
-    offset = -30; // adjust this value
-  }
+  // 2. Automatically update active section when scrolling
+  useEffect(() => {
+    const sectionIds = ['home', 'work', 'services', 'about', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -50% 0px', // Triggers when a section passes the middle of the viewport
+      threshold: 0,
+    };
 
-  const top =
-    element.getBoundingClientRect().top +
-    window.pageYOffset -
-    offset;
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
 
-  window.scrollTo({
-    top,
-    behavior: 'smooth',
-  });
-};
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <main className="relative">
       <MeshBackground scrollYProgress={scrollYProgress} />
 
+      {/* 3. Pass the dynamic state here instead of hardcoded "home" */}
       <Navigation
-        activeSection="home"
+        activeSection={activeSection}
         onNavigate={handleNavigate}
       />
 
-      <Hero />
-      <WorkSection />
-      <ServicesSection />
-      <About />
-      <Contact />
+      {/* 4. Wrapped components in containers with explicit IDs to match navigation */}
+      <div id="home"><Hero /></div>
+      <div id="work"><WorkSection /></div>
+      <div id="services"><ServicesSection /></div>
+      <div id="about"><About /></div>
+      <div id="contact"><Contact /></div>
       <Footer />
     </main>
   );

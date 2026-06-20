@@ -24,7 +24,7 @@ export default function Footer() {
                 text-[#2D0004]
               "
             >
-              STUDIO ARCHIVE
+              Khyati Studio
             </h3>
 
             <p
@@ -43,14 +43,14 @@ export default function Footer() {
                 md:max-w-none
               "
             >
-              © 2024 STUDIO ARCHIVE. CURATED EXCELLENCE.
+              © 2026 Khyati Studio. DIGITAL ART DIRECTION.
             </p>
           </div>
 
           {/* Right Side */}
           <div className="flex flex-col items-end md:flex-row md:items-center gap-2 md:gap-8">
             <a
-              href="https://www.instagram.com/_khyatii612?igsh=MXRnMXJzMXE1ZTV5aQ=="
+              href="https://www.instagram.com/khyaticanvas?igsh=MTN6bGp6azhrZmphYw=="
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -74,7 +74,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://behance.net"
+              href="https://www.behance.net/khyatipaul"
               target="_blank"
               rel="noopener noreferrer"
               className="
